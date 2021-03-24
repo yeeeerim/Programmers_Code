@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 class Solution {
     public String solution(String new_id) {
-         String answer = "";
+        String answer = "";
         ArrayList<Character> id = new ArrayList<>();
 
         /* String->ArrayList º¯°æ */
