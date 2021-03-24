@@ -20,7 +20,6 @@ public class Solution {
         	a = temp.subList(commands[i][0]-1, commands[i][1]);
         	Collections.sort(a);
         	answer[i] = a.get(commands[i][2]-1);
-        	System.out.println(answer[i]);
         }
         
         return answer;
