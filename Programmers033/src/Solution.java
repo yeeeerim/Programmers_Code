@@ -35,26 +35,22 @@ public class Solution {
         		left.setLocation(numbers[i]/3, 0);
         		answer+="L";
         	} else if(numbers[i]==3||numbers[i]==6||numbers[i]==9) {
-        		right.setLocation(numbers[i]/3-1, 0);
+        		right.setLocation(numbers[i]/3-1, 2);
         		answer+="R";
         	} else { // 2,5,8,0
         		int ld = distance(left,numbers[i]), rd=distance(right,numbers[i]);
-        		System.out.println(i+": "+ld+"vs"+rd);
         		if(ld<rd) {
-        			if(numbers[i]==0) left.setLocation(3, 1);
-        			left.setLocation(numbers[i]/3, 1);
+        			left.setLocation(numbers[i]==0?3:numbers[i]/3, 1);
         			answer+="L";
         		} else if(ld>rd) {
-        			if(numbers[i]==0) right.setLocation(3, 1);
-        			right.setLocation(numbers[i]/3-1, 1);
+        			right.setLocation(numbers[i]==0?3:numbers[i]/3, 1);
         			answer+="R";
         		} else { // 거리가 같다면 hand 고려
-        			System.out.println("-");
         			if(hand.equals("right")) { // 오른손잡이
-        				right.setLocation(numbers[i]/3-1, 1);
+        				right.setLocation(numbers[i]==0?3:numbers[i]/3, 1);
             			answer+="R";
         			} else { // 왼손잡이
-            			left.setLocation(numbers[i]/3, 1);
+            			left.setLocation(numbers[i]==0?3:numbers[i]/3, 1);
             			answer+="L";
         			}
         		}
