@@ -17,7 +17,6 @@ public class Solution {
         		ing.remove(0);
         	}
         }
-        
         return answer;
     }
     public static void main(String args[]) {
