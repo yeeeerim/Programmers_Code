@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class Solution {
     public static int solution(int bridge_length, int weight, int[] truck_weights) {
-        int answer = 0;
         ArrayList<Integer> tw = new ArrayList<>(truck_weights.length);
         ArrayList<Integer> ing = new ArrayList<>(bridge_length);
-        int currentWeight = 0;
+        int sum = truck_weights[0];
+        int cnt = 2;
         
         if(bridge_length==1) return 2;
         if(truck_weights.length==1) return weight+1;
@@ -13,21 +13,24 @@ public class Solution {
         for(int i=0; i<truck_weights.length; i++)
         	tw.add(truck_weights[i]);
         
-        ing.add(1,tw.remove(0)); answer+=2;
-        currentWeight+=truck_weights[0];
+        ing.add(tw.remove(0));
         
-        int cnt=2;
-        while(tw.size()!=0||ing.size()!=0) {
-        	if(currentWeight+tw.get(0)<=weight&&cnt<=bridge_length) {
-        		ing.add(tw.remove(0));
-        	} else if(currentWeight+tw.get(0)>weight&&cnt<=bridge_length) {
-        		ing.add(0);
-        	} else if(cnt==bridge_length) {
-        		
-        	}
+        for(int i=0; i<bridge_length-1; i++)
+        	ing.add(0);
+        
+        while(tw.size()!=0) {
         	cnt++;
+        	ing.add(0,tw.get(0));
+    		sum+=tw.get(0); if(cnt>bridge_length) sum-=ing.get(bridge_length);
+        	if(sum<=weight) {
+        		tw.remove(0);
+        	} else {
+        		sum-=tw.get(0);
+        		ing.remove(0);
+        		ing.add(0,0);
+        	}
         }
-        return answer;
+        return ing.size()+1;
     }
     public static void main(String args[]) {
     	int tw[] = {7,4,5,6};
