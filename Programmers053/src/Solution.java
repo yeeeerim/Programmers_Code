@@ -1,24 +1,28 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Solution {
     public static String[] solution(String[] record) {
         String[] answer = {};
+        ArrayList<String> arr = new ArrayList<>();
+        HashMap<String,String> hm = new HashMap<String,String>();
         
         for(int i=0; i<record.length; i++) {
         	String[] s = record[i].split(" ");
-        	String uid = s[1];
-        	boolean flag = false;
-        	for(int j=0; j<i; j++) {
-        		if(answer[j].split(" ")[0].equals(uid)) {
-        			flag = true;
-        		}
+        	if(!s[0].equals("Leave")) {
+        		hm.put(s[1], s[2]);
         	}
-        	if(!flag) {
-        		answer[i] = s[1]+" "+s[2]+" 님이 들어왔습니다.";
-        	}
-
-        	
         }
         
+        for(int i=0; i<record.length; i++) {
+        	String[] s = record[i].split(" ");
+        	if(s[0].equals("Enter")) {
+        		arr.add(hm.get(s[1])+"님이 들어왔습니다.");
+        	} else if(s[0].equals("Leave")) {
+        		arr.add(hm.get(s[1])+"님이 나갔습니다.");
+        	}
+        }
+        answer = arr.toArray(new String[arr.size()]);
         return answer;
     }
 	public static void main(String[] args) {
