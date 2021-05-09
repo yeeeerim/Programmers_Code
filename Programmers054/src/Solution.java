@@ -1,30 +1,25 @@
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 public class Solution {
     public static int solution(int[] scoville, int K) {
         int answer = 0;
-        ArrayList<Integer> arr = new ArrayList<>();
+        PriorityQueue q = new PriorityQueue();
         
         for(int k:scoville) {
-        	arr.add(k);
+        	q.add(k);
         }
-        
-        Collections.sort(arr);
 
-        if(arr.get(0)>=K) return -1;
-        while(arr.get(0)<K) {
+        if((int)q.peek()>=K) return -1;
+        while((int)q.peek()<K) {
         	answer++;
-        	arr.add(arr.get(0)+arr.remove(1)*2);
-        	arr.remove(0);
-        	if(arr.size()==1&&arr.get(0)<K) return -1;
-        	Collections.sort(arr);
+        	q.add((int)q.poll()+(int)q.poll()*2);
+        	if(q.size()==1&&(int)q.peek()<K) return -1;
         }
         
         return answer;
     }
 	public static void main(String[] args) {
-		int[] s = {2,3};
+		int[] s = {1, 2, 3, 9, 10, 12};
 		System.out.println(solution(s,7));
 	}
 
