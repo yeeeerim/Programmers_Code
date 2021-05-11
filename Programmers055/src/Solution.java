@@ -15,7 +15,6 @@ public class Solution {
         	}
         	if(sum==target) answer++;
         }
-        
         return answer;
     }
 	public static void main(String[] args) {
