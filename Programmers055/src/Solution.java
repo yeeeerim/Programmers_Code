@@ -16,6 +16,7 @@ public class Solution {
         	if(sum==target) answer++;
         }
         return answer;
+        
     }
 	public static void main(String[] args) {
 		int[] n = {1,1,1,1,1};
