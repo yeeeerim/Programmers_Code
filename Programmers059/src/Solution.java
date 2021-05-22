@@ -1,16 +1,12 @@
+import java.util.Arrays;
 
 public class Solution {
     public static boolean solution(String[] phone_book) {
-        int len = phone_book.length;
+        Arrays.sort(phone_book);
         
-        for(int i=0; i<len-1; i++) {
-        	for(int j=i+1; j<len; j++) {
-        		if(phone_book[i].length()<=phone_book[j].length()) {
-        			if(phone_book[j].substring(0, phone_book[i].length()).equals(phone_book[i])) return false;
-        		} else {
-        			if(phone_book[i].substring(0, phone_book[j].length()).equals(phone_book[j])) return false;
-            	}
-        	}
+        for(int i=0; i<phone_book.length-1; i++) {
+        	if(phone_book[i+1].length()<phone_book[i].length()) continue;
+        	if(phone_book[i+1].substring(0, phone_book[i].length()).equals(phone_book[i])) return false;
         }
         
         return true;
