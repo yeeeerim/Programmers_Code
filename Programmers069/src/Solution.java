@@ -21,8 +21,9 @@ public class Solution {
 //        }
         for(int i=0; i<s.length(); i++) {
         	if(s.substring(i, i+1).equals("0")) {
+        		System.out.println(i);
         		if(i==0) s = s.substring(1, s.length()-1);
-        		else s = s.substring(0, i) + s.substring(i+1, s.length()-1);
+        		else s = s.substring(0, i-1) + s.substring(i+1, s.length()-1);
         		zero_cnt++; i--;
         	}
         }
