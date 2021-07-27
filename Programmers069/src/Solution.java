@@ -22,6 +22,8 @@ public class Solution {
         }
         
 //        2. 2진수로 변환
+        s = Integer.parseInt(s,2)+"";
+        
         
         answer[1] = zero_cnt;
         
