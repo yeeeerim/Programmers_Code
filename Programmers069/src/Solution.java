@@ -11,19 +11,20 @@ public class Solution {
         for(int i=0; i<s.length(); i++)
         	arr.add(s.substring(i, i+1));
         
-      
-//        1. 0 제거 + 갯수 COUNT
-        for(int i=0; i<s.length(); ++i) {
-        	if(s.substring(i, i+1).equals("0")) {
-        		if(i==0) s = s.substring(1, s.length()-1);
-        		else s = s.substring(0, i) + s.substring(i+1, s.length());
-        		zero_cnt++; --i;
-        	}
+        while(s.length()!=1) {
+//          1. 0 제거 + 갯수 COUNT
+            for(int i=0; i<s.length(); ++i) {
+            	if(s.substring(i, i+1).equals("0")) {
+            		if(i==0) s = s.substring(1, s.length()-1);
+            		else s = s.substring(0, i) + s.substring(i+1, s.length());
+            		zero_cnt++; --i;
+            	}
+            }
+            
+//            2. 2진수로 변환
+            s = Integer.toBinaryString(s.length())+"";
+            System.out.println(s);
         }
-        
-//        2. 2진수로 변환
-        s = Integer.parseInt(s,2)+"";
-        
         
         answer[1] = zero_cnt;
         
