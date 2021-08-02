@@ -5,11 +5,9 @@ import java.util.List;
 public class Solution {
     public static int[] solution(String s) {
         int[] answer = new int[2];
-        List<String> arr = new ArrayList<>();
+        int repetition_cnt = 0;
         int zero_cnt = 0;
-        
-        for(int i=0; i<s.length(); i++)
-        	arr.add(s.substring(i, i+1));
+
         
         while(s.length()!=1) {
 //          1. 0 제거 + 갯수 COUNT
@@ -23,9 +21,11 @@ public class Solution {
             
 //            2. 2진수로 변환
             s = Integer.toBinaryString(s.length())+"";
-            System.out.println(s);
+            
+            repetition_cnt++;
         }
         
+        answer[0] = repetition_cnt;
         answer[1] = zero_cnt;
         
         
