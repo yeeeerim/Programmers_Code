@@ -13,7 +13,7 @@ public class Solution {
 //          1. 0 제거 + 갯수 COUNT
             for(int i=0; i<s.length(); ++i) {
             	if(s.substring(i, i+1).equals("0")) {
-            		if(i==0) s = s.substring(1, s.length()-1);
+            		if(i==0) s = s.substring(1, s.length());
             		else s = s.substring(0, i) + s.substring(i+1, s.length());
             		zero_cnt++; --i;
             	}
@@ -32,7 +32,7 @@ public class Solution {
         return answer;
     }
 	public static void main(String[] args) {
-		int[] answer = solution("110010101001");
+		int[] answer = solution("01110");
 		System.out.println(answer[0]);
 		System.out.println(answer[1]);
 	}
