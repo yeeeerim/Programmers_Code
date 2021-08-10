@@ -1,12 +1,15 @@
+import java.util.ArrayList;
 
+// 방문길이
 public class Solution {
-    public int solution(String s) {
-        int answer = -1;
+    public static int solution(String dirs) {
+        int answer = 0;
+        ArrayList<Integer> arr = new ArrayList<>();
+        
         return answer;
     }
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		System.out.println(solution("ULURRDLLU"));
 	}
 
 }
