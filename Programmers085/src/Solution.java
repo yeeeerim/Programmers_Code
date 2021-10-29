@@ -18,6 +18,10 @@ public class Solution {
 		case 3: // West
 			y--; break;
 		}
+		
+		p.x=x;
+		p.y=y;
+		
 		return p;
 	}
 	
@@ -59,26 +63,27 @@ public class Solution {
         		if(picture[i][j]!=0) {
             		arr = new ArrayList<>(); // 현재 영역
         			Point p = new Point(i, j, picture[i][j]);
-        			picture[j][i]=0; // 방문한 곳 0으로 표시
+        			picture[i][j]=0; // 방문한 곳 0으로 표시
         			arr.add(p); // 현재 영역에 추가
         			
         			while(arr.size()!=0) {
         				
         				for(int k=0; k<4; k++) {
-//        					System.out.println("k: "+k);
+        					System.out.println("k: "+k);
             				Point next = move(p,k);
             				if(next.x>-1&&next.y>-1) { // 벽이 아니고
                 				next.color = picture[next.x][next.y];
             					if(next.color==p.color) { // 색상이 같으면
             						arr.add(next); // 현재 영역에 추가
             						size++;
-//            						System.out.println(next.x+","+next.y);
-            						picture[next.x][next.y]=0;
+            						System.out.println(next.x+","+next.y);
             						p = next;
+            						picture[next.x][next.y]=0;
             						k=-1;
             						continue;
             					}
-            				}
+            					else {System.out.println("다른색");}
+            				} else {System.out.println("벽="+k);}
             				if(k==3) {
             					p = arr.remove(arr.size()-1);
             					k=-1;
