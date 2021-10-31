@@ -42,42 +42,35 @@ public class Solution {
         int numberOfArea = 0;
         int maxSizeOfOneArea = 0;
         ArrayList<Point> arr;
+        int[][] copy = new int[m][n];
+        
+        for(int i=0; i<m; i++)
+        	for(int j=0; j<n; j++)
+        		copy[i][j] = picture[i][j];
+        
         
         
         for(int i=0; i<m; i++) {
         	for(int j=0; j<n; j++) {
-//        		System.out.println("i,j = "+i+","+j);
-        		if(picture[i][j]!=0) {
+        		if(copy[i][j]!=0) {
             		arr = new ArrayList<>(); // 현재 영역
-        			Point p = new Point(i, j, picture[i][j]);
-//					System.out.println(p.x+","+p.y);
-        			picture[i][j]=0; // 방문한 곳 0으로 표시
+        			Point p = new Point(i, j, copy[i][j]);
+        			copy[i][j]=0; // 방문한 곳 0으로 표시
         			arr.add(p); // 현재 영역에 추가
         			int size = 1;
         			
         			while(arr.size()!=0) {
-        				
+        				p = arr.remove(0);
         				for(int k=0; k<4; k++) {
-//        					System.out.println("k: "+k);
             				Point next = move(p,k);
             				if(next.x>-1&&next.x<m&&next.y>-1&&next.y<n) { // 벽이 아니고
-                				next.color = picture[next.x][next.y];
+                				next.color = copy[next.x][next.y];
             					if(next.color==p.color) { // 색상이 같으면
             						arr.add(next); // 현재 영역에 추가
             						size++;
-//            						System.out.println(next.x+","+next.y);
-            						p = next;
-            						picture[next.x][next.y]=0;
-            						k=-1;
+            						copy[next.x][next.y]=0;
             						continue;
             					}
-//            					else {System.out.println("다른색");}
-            				}
-//            				else {System.out.println("벽="+k);}
-            				if(k==3&&arr.size()!=0) { 
-//            					System.out.println("pull : "+arr.get(arr.size()-1).x+","+arr.get(arr.size()-1).y);
-            					p = arr.remove(arr.size()-1);
-            					k=-1;
             				}
             			}
         				
