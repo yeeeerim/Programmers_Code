@@ -8,11 +8,17 @@
 - [유클리드 알고리즘](https://blockdmask.tistory.com/53) : 주어진 두 수 사이에 존재하는 최대공약수(GCD)를 구하는 알고리즘
 ```
 int gcd(int a, int b){
-    
     if(b == 0){
         return a;
     }else{
         return gcd(b, a%b);
     }
 }
+```
+
+- [Class Stack\<E>](https://docs.oracle.com/javase/7/docs/api/java/util/Stack.html) : java.util.Stack 에 존재하는 Stack 클래스
+```
+Stack<Integer> stack = new Stack<>();
+stack.push(1);
+stack.pop();
 ```
