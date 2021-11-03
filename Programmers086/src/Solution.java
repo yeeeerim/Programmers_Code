@@ -42,6 +42,7 @@ public class Solution {
         Edge e;
         int w = grid[0].length();
         int h = grid.length;
+        boolean[] cycle_check = new boolean[4];
         
         ArrayList<Edge> edges = new ArrayList<>();
         edges.add(new Edge(-1,0));
@@ -62,7 +63,17 @@ public class Solution {
             int cnt = 0;
         	n = new Node(0,0);
         	e = edges.get(i);
+        	if(cycle_check[i]==true) continue;
             do {
+            	
+            	if(n.x==0&&n.y==0) {
+            		for(int j=0; j<4; j++) {
+            			if(edges.get(j).x==e.x&&edges.get(j).y==e.y) {
+            				cycle_check[j]=true;
+            			}
+            		}
+            	}
+            	
             	// 1. edge 방향으로 node 이동
 //            	System.out.println(n.x+","+n.y);
             	cnt ++;
@@ -78,9 +89,10 @@ public class Solution {
             	} else if(n.y>=h) {
             		n.y=0;
             	}
+
             	
             	// 3. edge 방향 전환
-            	switch(in[n.x][n.y]) {
+            	switch(in[n.y][n.x]) {
     	        	case 'S' : // 직진
     	        		break;
     	        	case 'L' : // 좌회전
@@ -137,6 +149,8 @@ public class Solution {
 
 	public static void main(String[] args) {
 		String[] grid = {"SL","LR"};
+		String[] grid2 = {"S"};
+		String[] grid3 = {"R", "R"};
 		int[] answer = solution(grid);
 		for(int i=0; i<answer.length; i++)
 			System.out.print(answer[i]+" ");
