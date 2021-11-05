@@ -22,3 +22,35 @@ Stack<Integer> stack = new Stack<>();
 stack.push(1);
 stack.pop();
 ```
+
+- [Comparator\<T>/Comparable\<T>](https://ifuwanna.tistory.com/232) : Arrays.sort의 compare 혹은 compareTo 메소드를 override하기 위한 인터페이스 `Programmers 58`
+```
+Class Sorting implements Comparator<String> {
+    public String[] sorting() {
+        String[] s = {"6", "10", "2"};
+        Arrays.sort(s, new Sorting());
+        return s;
+    }
+    
+    @override
+	public int compare(String s1, String s2) {
+		String temp1 = s1+s2, temp2 = s2+s1;
+		
+		return temp2.compareTo(temp1);
+	}
+}
+```
+
+- [Collections.reverseOrder()](https://coding-factory.tistory.com/549) : Arrays.sort의 내림차순 정렬
+```
+Arrays.sort(arr, Collections.reverseOrder());
+```
+
+- [StringBuilder](https://hardlearner.tistory.com/288) : 문자열 연산에 대한 부하를 줄이기 위한 클래스
+```
+Stringbuilder sb = new Stringbuilder();
+sb.append("a");
+sb.append("b");
+System.out.println(sb.toString());
+```
+```
