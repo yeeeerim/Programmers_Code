@@ -53,3 +53,22 @@ sb.append("a");
 sb.append("b");
 System.out.println(sb.toString());
 ```
+
+- [순열](https://bcp0109.tistory.com/14) : nCr
+```
+static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, int r) {
+        if (depth == r) {
+            print(output, r);
+            return;
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (visited[i] != true) {
+                visited[i] = true;
+                output[depth] = arr[i];
+                perm(arr, output, visited, depth + 1, n, r);
+                visited[i] = false;
+            }
+        }
+}
+```
