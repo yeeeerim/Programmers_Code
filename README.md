@@ -79,7 +79,7 @@ public void permutation(String prefix, String str, HashSet<Integer> set) { // pe
 }
 ```
 
-- [소수 체크]() `Programmers87`
+- [소수 체크](#) : `Programmers87`
 ```
 boolean isPrimeNum(int n) {
 	if(n<2) return false;
