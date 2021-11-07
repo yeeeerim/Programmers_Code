@@ -23,7 +23,7 @@ stack.push(1);
 stack.pop();
 ```
 
-- [Comparator\<T>/Comparable\<T>](https://ifuwanna.tistory.com/232) : Arrays.sort의 compare 혹은 compareTo 메소드를 override하기 위한 인터페이스 `Programmers 58`
+- [Comparator\<T>/Comparable\<T>](https://ifuwanna.tistory.com/232) : Arrays.sort의 compare 혹은 compareTo 메소드를 override하기 위한 인터페이스 `Programmers58`
 ```
 Class Sorting implements Comparator<String> {
     public String[] sorting() {
@@ -54,21 +54,30 @@ sb.append("b");
 System.out.println(sb.toString());
 ```
 
-- [순열](https://bcp0109.tistory.com/14) : nCr
+- [순열](https://bcp0109.tistory.com/14) : nCr `Programmers87`
 ```
-static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, int r) {
-        if (depth == r) {
-            print(output, r);
-            return;
-        }
+static void permutation(int[] arr, int depth, int n, int r) {
+	if (depth == r) {
+	    print(arr, r);
+	    return;
+	}
 
-        for (int i = 0; i < n; i++) {
-            if (visited[i] != true) {
-                visited[i] = true;
-                output[depth] = arr[i];
-                perm(arr, output, visited, depth + 1, n, r);
-                visited[i] = false;
-            }
-        }
+	for (int i = depth; i < n; i++) {
+	    swap(arr, depth, i);
+	    permutation(arr, depth + 1, n, r);
+	    swap(arr, depth, i);
+	}
+}
+```
+
+- 소수 체크 `Programmers87`
+```
+boolean isPrimeNum(int n) {
+	if(n<2) return false;
+	for(int i=2; i<=Math.sqrt(n); i++) {
+		if(n%i==0) return false;
+	}
+
+	return true;
 }
 ```
