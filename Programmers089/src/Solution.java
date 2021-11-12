@@ -32,8 +32,10 @@ public class Solution {
 		visited[now.y][now.x] = true; 
         
 //        bfs
-        while(now.x!=w-1||now.y!=h-1) {
+        while(true) {
         	now = pop();
+        	
+        	if(now.x==w-1&&now.y==h-1) break;
         	
         	for(int i=0; i<4; i++) {
         		int dir_x = now.x+dir[i][1], dir_y = now.y+dir[i][0];
@@ -42,20 +44,18 @@ public class Solution {
         		if(visited[p.y][p.x]==false&&maps[p.y][p.x]==1) {
         			p.len = now.len+1;
         			push(p);
+        			visited[p.y][p.x] = true;
         		}
-        		
         	}
-        	System.out.println(queue.size());
+        	
         	if(queue.size()==0) return -1;
         }
-        
-        
         
         return now.len+1;
     }
 	public static void main(String[] args) {
-//		int[][] maps = {{1,0,1,1,1},{1,0,1,0,1},{1,0,1,1,1},{1,1,1,0,1},{0,0,0,0,1}};
-		int[][] maps = {{1,0,1,1,1},{1,0,1,0,1},{1,0,1,1,1},{1,1,1,0,0},{0,0,0,0,1}};
+		int[][] maps = {{1,0,1,1,1},{1,0,1,0,1},{1,0,1,1,1},{1,1,1,0,1},{0,0,0,0,1}};
+//		int[][] maps = {{1,0,1,1,1},{1,0,1,0,1},{1,0,1,1,1},{1,1,1,0,0},{0,0,0,0,1}};
 		System.out.println(solution(maps));
 	}
 
