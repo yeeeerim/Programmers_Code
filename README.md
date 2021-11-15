@@ -96,3 +96,6 @@ boolean isPrimeNum(int n) {
 	return true;
 }
 ```
+
+### [다익스트라(Dijkstra) 알고리즘](https://bumbums.tistory.com/4)
+: 그래프에서 출발점부터 목표점까지의 최단 거리를 구할 때 사용하는 알고리즘
