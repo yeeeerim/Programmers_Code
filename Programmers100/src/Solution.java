@@ -11,7 +11,6 @@ public class Solution {
                 int[] xy = getIntersection(line[i], line[j]);
                 if(xy!=null) {
                 	arr.add(xy);
-                	System.out.println(xy[0]+","+xy[1]);
                 }
         	}
         }
@@ -29,19 +28,13 @@ public class Solution {
         	else if(x>=max_x) max_x=x;
         }
         
-//        System.out.println(min_y);
-//        System.out.println(max_y);
-//        System.out.println(min_x);
-//        System.out.println(max_x);
-        
         int x_len = max_y-min_y+1, y_len = max_x-min_x+1;
         
         char[][] matrix = new char[y_len][x_len];
-        answer = new String[x_len];
-        System.out.println(y_len+",,"+x_len);
+        answer = new String[y_len];
         
         for(int i=0; i<arr.size(); i++) {
-        	matrix[y_len/2-arr.get(i)[1]][x_len/2-arr.get(i)[0]] = '*';
+        	matrix[Math.abs(arr.get(i)[1]-max_y)][arr.get(i)[0]+Math.abs(max_x)] = '*';
         }
         
         for(int i=0; i<matrix.length; i++) {
